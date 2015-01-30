@@ -6,5 +6,7 @@ object HelloWorld {
     println(msg)
     val msg2: java.lang.String = "Hello again, world!"
     println(msg2)
+    val msg3: String = "Hello yet again, world!"
+    println(msg3)
   }
 }
