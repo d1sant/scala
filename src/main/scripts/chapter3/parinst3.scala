@@ -1,0 +1,6 @@
+val greetString = new Array[String](3)
+greetString.update(0, "Hello")
+greetString.update(1, ", ")
+greetString.update(2, "world!\n")
+for(i <- 0.to(2))
+  print(greetString.apply(i))
