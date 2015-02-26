@@ -1,4 +1,4 @@
-package com.my.scala.chapter2
+package com.my.scala.chapter3
 
 object Lists {
 
