@@ -7,6 +7,9 @@ object Functional {
     printArgsFun(Array("4", "5", "6"))
     printArgsFun2(Array("7", "8", "9"))
     println(formatArgs(Array("10", "11", "12")))
+
+    val res = formatArgs(Array("zero", "one", "two"))
+    assert(res == "zero\none\ntwo")
   }
 
   // Imperative approach with var identifier
