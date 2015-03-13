@@ -16,5 +16,7 @@ object ChecksumAccumulatorMain {
 
     val acc2 = new ChecksumAccumulator2
     // acc2.sum = 5 // won't compile, cause sum is private
+
+    println("calculated.sum = " + ChecksumAccumulator3.calculate("Every value is an object."))
   }
 }
