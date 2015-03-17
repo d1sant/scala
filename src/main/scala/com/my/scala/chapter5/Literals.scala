@@ -28,5 +28,10 @@ object Literals {
     println(tower)
     val of = 31l
     println(of)
+
+    val little: Short = 367
+    println(little)
+    val littler: Byte = 38
+    println(littler)
   }
 }
