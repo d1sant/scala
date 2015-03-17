@@ -33,5 +33,28 @@ object Literals {
     println(little)
     val littler: Byte = 38
     println(littler)
+
+    val big = 1.2345 // by default it's a double if there is no 'f' in the end of literal
+    println(big)
+    val bigger = 1.2345e1 // 'e' means exponent portion of 10 by which the other portion is multiplied
+    println(bigger)
+    val bigger2 = 1.2345e2
+    println(bigger2)
+    val bigger3 = 1.2345e3
+    println(bigger3)
+    val bigger4 = 1.2345e4
+    println(bigger4)
+    val biggerStill = 123E45
+    println(biggerStill)
+
+    val littleFloat = 1.2345F // float representation
+    println(littleFloat)
+    val littleBiggerFloat = 3e5F // float representation of 300000.0
+    println(littleBiggerFloat)
+
+    val anotherDouble = 3e5
+    println(anotherDouble)
+    val yetAnother = 300000.0
+    println(yetAnother)
   }
 }
