@@ -1,6 +1,6 @@
 package com.my.scala.chapter5
 
-object Literals {
+object NumberLiterals {
 
   def main(args: Array[String]) {
 
