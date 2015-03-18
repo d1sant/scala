@@ -22,7 +22,7 @@ object ArithmeticOperators {
     val y = +3 // int
     println(y)
 
-    println(+neg)
+    println(+neg) // do nothing
     println(-neg)
   }
 }
