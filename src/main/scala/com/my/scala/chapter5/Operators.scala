@@ -23,5 +23,9 @@ object Operators {
     // prefix operators (unary operator) and can be '+, -, !, and ~':
     println(-2.0)
     println((2.0).unary_-)
+
+    // postfix operators (unary operator)
+    println(s.toLowerCase)
+    println(s toLowerCase)
   }
 }
