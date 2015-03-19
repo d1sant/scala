@@ -1,6 +1,6 @@
 package com.my.scala.chapter5
 
-object ArithmeticOperators {
+object ArithmeticOperations {
 
   def main(args: Array[String]) {
 

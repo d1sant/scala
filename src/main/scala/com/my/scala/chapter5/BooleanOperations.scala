@@ -1,6 +1,6 @@
 package com.my.scala.chapter5
 
-object BooleanOperators {
+object BooleanOperations {
 
   def main(args: Array[String]) {
 
