@@ -1,6 +1,7 @@
 package com.my.scala.chapter5
 
 object OperatorPrecedence {
+
   def main(args: Array[String]) {
 
     println(2 << 2 + 2) // prints 32 cause '+' operator is higher than '<<'
