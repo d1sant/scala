@@ -10,5 +10,8 @@ object Rationals {
     val oneHalf = new Rational(1, 2)
     val twoThirds = new Rational(2, 3)
     println(oneHalf add twoThirds)
+
+    println(oneHalf.numer) // accessing to fields
+    println(oneHalf.denom)
   }
 }
