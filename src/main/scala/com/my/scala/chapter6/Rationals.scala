@@ -25,5 +25,14 @@ object Rationals {
     println(x + x * y) // precedence of '*', as defined in scala, is higher that '+'. 5/6 is the result
     println((x + x) * y) // 2/3 is the result
     println(x + (x * y)) // 5/6 is the result
+
+    println(x - x) // 0/1
+    println(x - 1) // -1/2
+
+    println(y * y) // 4/9
+    println(y * 2) // 4/3
+
+    println(x / x) // 1/1
+    println(x / 2) // 1/4
   }
 }
