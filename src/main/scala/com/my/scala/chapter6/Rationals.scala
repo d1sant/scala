@@ -13,5 +13,9 @@ object Rationals {
 
     println(oneHalf.numer) // accessing to fields
     println(oneHalf.denom)
+
+    println(new Rational(3)) // auxiliary constructor
+
+    println(new Rational(42, 66)) // normalized fields are 11 and 7
   }
 }
