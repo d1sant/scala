@@ -17,5 +17,13 @@ object Rationals {
     println(new Rational(3)) // auxiliary constructor
 
     println(new Rational(42, 66)) // normalized fields are 11 and 7
+
+    val x = new Rational(1, 2)
+    val y = new Rational(2, 3)
+    println(x + y)
+    println(x.+(y))
+    println(x + x * y) // precedence of '*', as defined in scala, is higher that '+'. 5/6 is the result
+    println((x + x) * y) // 2/3 is the result
+    println(x + (x * y)) // 5/6 is the result
   }
 }
