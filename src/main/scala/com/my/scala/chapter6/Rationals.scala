@@ -34,5 +34,9 @@ object Rationals {
 
     println(x / x) // 1/1
     println(x / 2) // 1/4
+
+    implicit def intToRational(x: Int): Rational = new Rational(x)
+    val r = new Rational(2, 3)
+    println(2 * r) // changing places of operands using 'implicit'
   }
 }
