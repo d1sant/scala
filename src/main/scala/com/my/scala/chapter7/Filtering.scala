@@ -1,6 +1,6 @@
 package com.my.scala.chapter7
 
-object FilteringCollections {
+object Filtering {
 
   def main(args: Array[String]) {
 
