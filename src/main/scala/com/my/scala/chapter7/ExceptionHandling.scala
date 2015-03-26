@@ -1,6 +1,7 @@
 package com.my.scala.chapter7
 
 import java.io.{IOException, FileNotFoundException, FileReader}
+import java.net.{MalformedURLException, URL}
 
 object ExceptionHandling {
 
@@ -17,6 +18,18 @@ object ExceptionHandling {
       // use the file
     } finally {
       file2.close()
+    }
+  }
+
+  def f(): Int = try { return 1} finally { return 2 } // result is 2
+  def g(): Int = try { 1 } finally { 2 } // result is 1
+
+  def urlFor(path: String): Unit = {
+    try {
+      new URL(path)
+    } catch {
+      case e: MalformedURLException =>
+        new URL("http://www.scala-lang.org")
     }
   }
 
