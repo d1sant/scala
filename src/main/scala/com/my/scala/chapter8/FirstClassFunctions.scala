@@ -22,5 +22,11 @@ object FirstClassFunctions {
     someNumbers.foreach((x: Int) => println(x))
 
     println(someNumbers.filter((x: Int) => x > 0))
+
+    // short form of function literals
+    println(someNumbers.filter((x) => x > 0))
+
+    // even shorter form of function literals
+    println(someNumbers.filter(x => x > 0))
   }
 }
