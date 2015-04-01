@@ -7,7 +7,7 @@ object LocalLongLines2 {
   def processFile(fileName: String, width: Int): Unit = {
 
     def processLine(line: String): Unit = {
-      if (line.length > width)
+      if (line.length > width) // here we've got an access to outer function's parameters
         println(fileName + ": " + line)
     }
 
