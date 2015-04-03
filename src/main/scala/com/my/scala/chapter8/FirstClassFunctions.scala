@@ -28,5 +28,12 @@ object FirstClassFunctions {
 
     // even shorter form of function literals
     println(someNumbers.filter(x => x > 0))
+
+    // placeholder syntax: the shortest form of function literals
+    println(someNumbers.filter(_ > 0))
+
+    // val f = _ + _ won't work cause compiler doesn't have enough information to infer missing parameter types
+    val f = (_: Int) + (_: Int)
+    println(f(5, 10))
   }
 }
