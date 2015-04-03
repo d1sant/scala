@@ -35,5 +35,23 @@ object FirstClassFunctions {
     // val f = _ + _ won't work cause compiler doesn't have enough information to infer missing parameter types
     val f = (_: Int) + (_: Int)
     println(f(5, 10))
+
+    // partially applied functions
+    someNumbers.foreach(println _) // obsolete version with placeholder
+    someNumbers.foreach(println)
+
+    def sum(a: Int, b: Int, c: Int) = a + b + c
+    println(sum(1, 2, 3))
+
+    val a = sum _
+    println(a(1, 2, 3))
+
+    println(a.apply(1, 2, 3)) // under the hood of partially applied functions
+
+    val b = sum(1, _: Int, 3)
+    println(b(2)) // only one parameter should be specified to function
+    println(b(5))
+
+    // val c = sum will cause an error: missing arguments for method sum
   }
 }
