@@ -3,7 +3,8 @@ package com.my.scala.chapter8
 object TailRecursion {
 
   def main(args: Array[String]) {
-
+    // boom(5) // with new stack frame for each recursive call
+    bang(5) // with no new stack frame for each recursive call
   }
 
   def isGoodEnough(guess: Double): Boolean = {
@@ -13,6 +14,8 @@ object TailRecursion {
   def improve(guess: Double): Double = {
     guess // TODO implement me
   }
+
+  // NOTE: as turned out, tail-recursion and no-recursion execution time are almost the same
 
   // Tail-recursion approach:
   def approximate(guess: Double): Double =
@@ -27,5 +30,14 @@ object TailRecursion {
     guess
   }
 
-  // NOTE: as turned out, tail-recursion and no-recursion execution time are almost the same
+  // It's not tail recursive function cause it performs increment after recursive call
+  // It'll build a new stack frame for each recursive call
+  def boom(x: Int): Int =
+    if (x == 0) throw new Exception("boom!")
+    else boom(x - 1) + 1
+
+  // It's tail-recursion approach which will be optimized away recursive call by scala compiler
+  def bang(x: Int): Int =
+    if (x == 0) throw new Exception("bang!")
+    else bang(x - 1)
 }
