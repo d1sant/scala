@@ -48,7 +48,7 @@ object TailRecursion {
 
   def isOdd(x: Int): Boolean =
     if (x == 0) false else isEven(x - 1)
-  
+
   // b) function value:
   val funValue = nestedFun _
   def nestedFun(x: Int): Unit = {
