@@ -2,6 +2,8 @@ package com.my.scala.chapter9
 
 object ByNameParams {
 
+  var assertionEnabled = true
+
   def main(args: Array[String]) {
 
     myAssert(() => 5 > 3) // it's ok
@@ -17,7 +19,6 @@ object ByNameParams {
     boolAssert(x / 0 == 0) // will throw an error: java.lang.ArithmeticException: / by zero
   }
 
-  var assertionEnabled = true
   def myAssert(predicate: () => Boolean) =
     if (assertionEnabled && !predicate())
       throw new AssertionError
