@@ -10,5 +10,6 @@ object ArrayElements {
 
     // subtyping
     val e: Element = new ArrayElement(Array("hello"))
+    println(e.width)
   }
 }
