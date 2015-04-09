@@ -19,5 +19,13 @@ object Elements {
     // sub typing 3
     val e3: Element = new UniformElement('x', 2, 3)
     println(e3.width)
+
+    invokeDome(e1)
+    invokeDome(e2)
+    invokeDome(e3)
+  }
+
+  def invokeDome(e: Element): Unit = {
+    e.demo()
   }
 }

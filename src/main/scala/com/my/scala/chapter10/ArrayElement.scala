@@ -11,5 +11,7 @@ package com.my.scala.chapter10
  */
 
 class ArrayElement(val contents: Array[String]) extends Element {
-
+  override def demo(): Unit = {
+    println("ArrayElement's implementation invoked")
+  }
 }
