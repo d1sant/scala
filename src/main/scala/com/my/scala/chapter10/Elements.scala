@@ -1,6 +1,6 @@
 package com.my.scala.chapter10
 
-object ArrayElements {
+object Elements {
 
   def main(args: Array[String]) {
 
