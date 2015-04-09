@@ -1,8 +1,11 @@
 package com.my.scala.chapter10
 
 object ParametricField {
-  val cat = new Cat
-  val tiger = new Tiger(false, 10)
+
+  def main(args: Array[String]) {
+    val cat = new Cat
+    val tiger = new Tiger(false, 10)
+  }
 }
 
 class Cat {
