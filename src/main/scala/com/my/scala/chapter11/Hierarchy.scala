@@ -1,4 +1,4 @@
-package com.my.scala.chapter10
+package com.my.scala.chapter11
 
 /**
  * Any is superclass for any classed in scala.
