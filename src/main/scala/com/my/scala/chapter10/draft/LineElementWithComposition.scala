@@ -1,4 +1,4 @@
-package com.my.scala.chapter10
+package com.my.scala.chapter10.draft
 
 class LineElementWithComposition(s: String) extends Element {
   val contents = Array(s)

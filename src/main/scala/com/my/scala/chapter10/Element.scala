@@ -1,5 +1,7 @@
 package com.my.scala.chapter10
 
+import Element.elem
+
 abstract class Element {
 
   def contents: Array[String]
@@ -7,20 +9,10 @@ abstract class Element {
   def width: Int = if (height == 0) 0 else contents(0).length
 
   def above(that: Element): Element =
-    new ArrayElement(this.contents ++ that.contents)
+    elem(this.contents ++ that.contents)
 
-  /** An imperative approach:
-  override def beside(that: Element): Element = {
-    val contents = new Array[String](this.contents.length)
-    for (i <- 0 until this.contents.length)
-      contents(i) = this.contents(i) + that.contents(i)
-    new ArrayElement(contents)
-  }
-  */
-
-  /** A Functional approach: */
   def beside(that: Element): Element = {
-    new ArrayElement(
+    elem(
       for(
         (line1, line2) <- this.contents zip that.contents
       ) yield line1 + line2
@@ -28,8 +20,33 @@ abstract class Element {
   }
 
   override def toString = contents mkString "\n"
+}
 
-  def demo(): Unit = {
-    println("Element's implementation invoked")
+object Element {
+
+  private class ArrayElement(
+    val contents: Array[String]
+  ) extends Element
+
+  private class LineElement(s: String) extends Element {
+    val contents = Array(s)
+    override def width = s.length
+    override def height = 1
   }
+
+  private class UniformElement (
+    ch: Char,
+    override val width: Int,
+    override val height: Int
+  ) extends Element {
+    private val line = ch.toString * width
+    def contents = Array.fill(height)(line)
+  }
+
+  def elem(contents: Array[String]): Element =
+    new ArrayElement(contents)
+  def elem(chr: Char, width: Int, height: Int): Element =
+    new UniformElement(chr, width, height)
+  def elem(line: String): Element =
+    new LineElement(line)
 }

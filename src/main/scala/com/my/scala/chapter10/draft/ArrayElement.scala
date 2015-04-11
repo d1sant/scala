@@ -1,4 +1,4 @@
-package com.my.scala.chapter10
+package com.my.scala.chapter10.draft
 
 /**
  * In order to get rid of parameter with almost the same name in constructor, we introduced parametric field.

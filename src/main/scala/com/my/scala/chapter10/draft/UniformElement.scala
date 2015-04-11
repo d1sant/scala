@@ -1,4 +1,4 @@
-package com.my.scala.chapter10
+package com.my.scala.chapter10.draft
 
 class UniformElement (
   ch: Char,
