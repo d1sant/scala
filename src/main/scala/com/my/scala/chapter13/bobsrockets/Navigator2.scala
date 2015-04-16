@@ -1,5 +1,5 @@
 package com.my.scala.chapter13.bobsrockets {
-  package navigation4 {
+  package navigation5 {
 
     class Navigator2 {
       // No need to say bobsrocketes.navigation4.StarMap
@@ -10,7 +10,7 @@ package com.my.scala.chapter13.bobsrockets {
   }
   class Ship {
     // No need to say bobsrocketes.navigation4.Navigator
-    val nav = new navigation4.Navigator2
+    val nav = new navigation5.Navigator2
   }
   package fleets {
     class Fleet {
