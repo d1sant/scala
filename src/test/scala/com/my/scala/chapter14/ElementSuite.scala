@@ -32,7 +32,7 @@ class ElementSuite extends Suite {
     }
   }
 
-  // Will throw TestFailedException cause elem method doesn't throw exceptions
+  // Interception of specific exceptions
   def testUniformElement5() = {
     intercept[IllegalArgumentException] {
       elem('x', -2, 3)
