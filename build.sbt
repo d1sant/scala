@@ -13,5 +13,3 @@ libraryDependencies += "org.testng" % "testng" % "6.2" % "test"
 libraryDependencies += "org.scala-tools.testing" % "specs_2.10" % "1.6.9" % "test"
 
 libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.12.2" % "test"
-
-    
