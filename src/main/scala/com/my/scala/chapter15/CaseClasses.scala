@@ -52,6 +52,12 @@ object CaseClasses {
 
     search2(List(0))
     search2(List(0, 1, 2, 3, 4))
+
+    println(generalSize("abc"))
+    println(generalSize(Map(1 -> 'a', 2 -> 'b')))
+    println(generalSize(math.Pi))
+
+    println(generalSize2("abcd"))
   }
 
   // wildcard patterns
@@ -90,5 +96,20 @@ object CaseClasses {
   def search2(x: Any) = x match {
     case List(0, _*) => println("found it")
     case _ =>
+  }
+
+  // typed patterns
+  def generalSize(x: Any) = x match {
+    case s: String => s.length
+    case m: Map[_, _] => m.size
+    case _ => -1
+  }
+
+  // straight-forward approach without typed patterns
+  def generalSize2(x: Any) = {
+    if (x.isInstanceOf[String]) {
+      val s = x.asInstanceOf[String]
+      s.length
+    }
   }
 }
