@@ -58,6 +58,12 @@ object CaseClasses {
     println(generalSize(math.Pi))
 
     println(generalSize2("abcd"))
+
+    println(isIntIntMap(Map(1 -> 1)))
+    println(isIntIntMap(Map("abc" -> "abc")))
+
+    println(isStringArray(Array("abc")))
+    println(isStringArray(Array(1, 2, 3)))
   }
 
   // wildcard patterns
@@ -111,5 +117,17 @@ object CaseClasses {
       val s = x.asInstanceOf[String]
       s.length
     }
+  }
+
+  // type erasure
+  def isIntIntMap(x: Any) = x match {
+    case m: Map[Int, Int] => true
+    case _ => false
+  }
+
+  // although type erasure doesn't apply to arrays
+  def isStringArray(x: Any) = x match {
+    case a: Array[String] => "yes"
+    case _ => "no"
   }
 }
