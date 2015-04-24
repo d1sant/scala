@@ -38,6 +38,20 @@ object CaseClasses {
     println(describe("hello"))
     println(describe(Nil))
     println(describe(List(1,2,3)))
+
+    println(describe2(0))
+    println(describe2(Nil))
+
+    describe3(BinOp("+", Var("x"), Number(0)))
+    describe3(BinOp("+", UnOp("-", Var("x")), Number(0)))
+    describe3(BinOp("-", UnOp("-", Var("x")), Number(0)))
+    describe3(Nil)
+
+    search(List(0, 1, 2))
+    search(List(1, 1, 2))
+
+    search2(List(0))
+    search2(List(0, 1, 2, 3, 4))
   }
 
   // wildcard patterns
@@ -53,5 +67,28 @@ object CaseClasses {
     case "hello" => "hi!"
     case Nil => "the empty list"
     case _ => "something else"
+  }
+
+  // variable patterns
+  def describe2(x: Any) = x match {
+    case 0 => "zero"
+    case somethingElse => "not zero " + somethingElse
+  }
+
+  // constructor patterns
+  def describe3(x: Any) = x match {
+    case BinOp("+", e, Number(0)) => println("a deep match")
+    case _ =>
+  }
+
+  // sequence patterns
+  def search(x: Any) = x match {
+    case List(0, _, _) => println("found it")
+    case _ =>
+  }
+
+  def search2(x: Any) = x match {
+    case List(0, _*) => println("found it")
+    case _ =>
   }
 }
