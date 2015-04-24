@@ -64,6 +64,8 @@ object CaseClasses {
 
     println(isStringArray(Array("abc")))
     println(isStringArray(Array(1, 2, 3)))
+    
+    println(absoluteDuplication(UnOp("abs", UnOp("abs", Var("x")))))
   }
 
   // wildcard patterns
@@ -129,5 +131,11 @@ object CaseClasses {
   def isStringArray(x: Any) = x match {
     case a: Array[String] => "yes"
     case _ => "no"
+  }
+  
+  // variable binding
+  def absoluteDuplication(expr: Expr) = expr match {
+    case UnOp("abs", e @ UnOp("abs", _)) => e
+    case _ =>  
   }
 }
