@@ -66,6 +66,9 @@ object CaseClasses {
     println(isStringArray(Array(1, 2, 3)))
     
     println(absoluteDuplication(UnOp("abs", UnOp("abs", Var("x")))))
+
+    // pattern guard
+    println(simplifyAdd(BinOp("+", Var("x"), Var("x"))))
   }
 
   // wildcard patterns
@@ -137,5 +140,21 @@ object CaseClasses {
   def absoluteDuplication(expr: Expr) = expr match {
     case UnOp("abs", e @ UnOp("abs", _)) => e
     case _ =>  
+  }
+
+  // pattern guard
+  def simplifyAdd(e: Expr) = e match {
+    case BinOp("+", x, y) if x == y => BinOp("*", x, Number(2))
+    case _ => e
+  }
+
+  // pattern overlaps
+  def simplifyAll(expr: Expr): Expr = expr match {
+    case UnOp("-", UnOp("-", e)) => simplifyAll(e) // '-' is its own inverse
+    case BinOp("+", e, Number(0)) => simplifyAll(e) // '0' is a neutral element for '+'
+    case BinOp("*", e, Number(1)) => simplifyAll(e) // '1' is a neutral element for '*'
+    case UnOp(op, e) => UnOp(op, simplifyAll(e))
+    case BinOp(op, l, r) => BinOp(op, simplifyAll(l), simplifyAll(r))
+    case _ => expr
   }
 }
