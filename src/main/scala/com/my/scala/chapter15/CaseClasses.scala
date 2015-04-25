@@ -167,4 +167,23 @@ object CaseClasses {
     case UnOp(op, e) => UnOp(op, simplifyBad(e))
     case UnOp("-", UnOp("-", e)) => e
   }
+
+  // sealed classes example: will cause compilation warning that match is not exhaustive
+  def describe(e: Expr2): String = e match {
+    case Number2(_) => "a number"
+    case Var2(_) => "a variable"
+  }
+
+  // sealed classes example: an approach for suppress (subdue) warning message
+  def describe2(e: Expr2): String = e match {
+    case Number2(_) => "a number"
+    case Var2(_) => "a variable"
+    case _ => throw new RuntimeException // should not happen
+  }
+
+  // sealed classes example: another approach for suppress warnings
+  def describe3(e: Expr2): String = (e: @unchecked) match {
+    case Number2(_) => "a number"
+    case Var2(_) => "a variable"
+  }
 }
