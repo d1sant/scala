@@ -69,6 +69,10 @@ object CaseClasses {
 
     // pattern guard
     println(simplifyAdd(BinOp("+", Var("x"), Var("x"))))
+
+    // pattern overlap
+    println(simplifyAll(UnOp("-", UnOp("-", BinOp("+", binOp, Number(0))))))
+    println(simplifyAll(BinOp("+", BinOp("*", binOp, Number(1)), Number(0))))
   }
 
   // wildcard patterns
@@ -156,5 +160,11 @@ object CaseClasses {
     case UnOp(op, e) => UnOp(op, simplifyAll(e))
     case BinOp(op, l, r) => BinOp(op, simplifyAll(l), simplifyAll(r))
     case _ => expr
+  }
+
+  // next pattern overlap won't compile cause of catch-all cases come after the more specific rule (unreachable code)
+  def simplifyBad(expr: Expr): Expr = expr match {
+    case UnOp(op, e) => UnOp(op, simplifyBad(e))
+    case UnOp("-", UnOp("-", e)) => e
   }
 }
