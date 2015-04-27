@@ -106,6 +106,13 @@ object CaseClasses {
 
     println(second2.isDefinedAt(List(5,6,7)))
     println(second2.isDefinedAt(List()))
+
+    // patterns in 'for' expressions
+    val capitals = Map("France" -> "Paris", "Japan" -> "Tokyo")
+    for ((country, city) <- capitals) println("The capital of " + country + " is " + city)
+
+    val result = List(Some("apple"), None, Some("orange"))
+    for (Some(fruit) <- result) println(fruit)
   }
 
   // wildcard patterns
