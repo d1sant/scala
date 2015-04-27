@@ -73,6 +73,16 @@ object CaseClasses {
     // pattern overlap
     println(simplifyAll(UnOp("-", UnOp("-", BinOp("+", binOp, Number(0))))))
     println(simplifyAll(BinOp("+", BinOp("*", binOp, Number(1)), Number(0))))
+
+    // patterns in variable definitions
+    val myTuple = (123, "abc")
+    val (number, string) = myTuple // defining myltiple variables with one assignment
+
+    val exp = new BinOp("*", Number(5), Number(1))
+    val BinOp(opExp, leftExp, rightExp) = exp
+    println(opExp)
+    println(leftExp)
+    println(rightExp)
   }
 
   // wildcard patterns
