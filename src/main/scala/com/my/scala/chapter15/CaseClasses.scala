@@ -83,6 +83,29 @@ object CaseClasses {
     println(opExp)
     println(leftExp)
     println(rightExp)
+
+    // case sequences as partial functions
+    val withDefault: Option[Int] => Int = {
+      case Some(x) => x
+      case None => 0
+    }
+
+    println(withDefault(Some(10)))
+    println(withDefault(None))
+
+    val second: List[Int] => Int = {
+      case x :: y :: _ => y
+    }
+
+    println(second(List(5, 6, 7)))
+    // println(second(List())) // won't work
+
+    val second2: PartialFunction[List[Int],Int] = {
+      case x :: y :: _ => y
+    }
+
+    println(second2.isDefinedAt(List(5,6,7)))
+    println(second2.isDefinedAt(List()))
   }
 
   // wildcard patterns
