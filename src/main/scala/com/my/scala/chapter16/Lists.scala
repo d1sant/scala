@@ -103,6 +103,11 @@ object Lists {
     // xs apply n equals (xs drop n).head
 
     println(abcde.indices)
+
+    // flattening lists
+    println(List(List(1, 2), List(3), List(), List(4, 5)).flatten)
+    println(fruit.map(_.toCharArray).flatten)
+    // List(1, 2, 3).flatten // will produce an error
   }
 
   /**
