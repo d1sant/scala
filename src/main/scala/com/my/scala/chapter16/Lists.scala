@@ -115,6 +115,16 @@ object Lists {
     println(zipped)
     println(abcde.zipWithIndex) // it's more efficient way to match position and element
     println(zipped.unzip) // changing back tuples to list
+
+    val abcdeStr = abcde.toString
+    println(abcdeStr)
+    println(abcde mkString("[", ",", "]"))
+    println(abcde mkString ",")
+    println(abcde mkString)
+
+    val buf = new StringBuilder
+    abcde addString(buf, "(", ";", ")")
+    println(buf)
   }
 
   /**
