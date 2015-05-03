@@ -125,6 +125,20 @@ object Lists {
     val buf = new StringBuilder
     abcde addString(buf, "(", ";", ")")
     println(buf)
+
+    // converting lists
+    val arr = abcde.toArray
+    println(arr.mkString(" "))
+    val lst = arr.toList
+    println(lst)
+
+    val arr2 = new Array[Int](10)
+    List(1, 2, 3) copyToArray(arr2, 3)
+    println(arr2.mkString(" "))
+
+    val it = abcde.iterator
+    println(it.next)
+    println(it.next)
   }
 
   /**
