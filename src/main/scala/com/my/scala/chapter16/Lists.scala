@@ -66,6 +66,19 @@ object Lists {
     // xs ::: ys ::: zs will interpret as xs ::: (ys ::: zs)
 
     println(append(List(1, 2), List(3, 4, 5)))
+
+    // List().length == 0 is quite expensive operation comparing to isEmpty if you need to check on emptiness
+    println(List(1, 2, 3).length)
+
+    val abcde = List('a', 'b', 'c', 'd', 'e')
+    println(abcde.head)
+    println(abcde.tail)
+    println(abcde.last)
+    println(abcde.init)
+
+    // List().init will throw an exception
+    // List().last will throw an exception
+    
   }
 
   /**
