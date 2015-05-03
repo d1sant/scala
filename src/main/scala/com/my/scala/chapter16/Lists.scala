@@ -90,4 +90,10 @@ object Lists {
     case y :: ys => if (x <= y) x :: xs
                     else y :: insert2(x, ys)
   }
+
+  def append[T](xs: List[T], ys: List[T]): List[T] =
+    xs match {
+      case List() => xs
+      case x :: xs1 => x :: append(xs1, ys)
+    }
 }
