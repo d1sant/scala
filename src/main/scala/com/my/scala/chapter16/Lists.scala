@@ -96,6 +96,13 @@ object Lists {
     println(abcde take 2)
     println(abcde drop 2)
     println(abcde splitAt 2)
+
+    println(abcde apply 2) // rare in scala comparing to array
+    println(abcde(2)) // rare in scala comparing to array
+
+    // xs apply n equals (xs drop n).head
+
+    println(abcde.indices)
   }
 
   /**
