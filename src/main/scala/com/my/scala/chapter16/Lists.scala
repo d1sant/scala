@@ -92,6 +92,10 @@ object Lists {
      * xs.reverse.head equals xs.last
      * xs.reverse.last equals xs.head
      */
+
+    println(abcde take 2)
+    println(abcde drop 2)
+    println(abcde splitAt 2)
   }
 
   /**
