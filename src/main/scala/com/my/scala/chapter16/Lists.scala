@@ -27,16 +27,29 @@ object Lists {
 
     // List() is also type of List[String]!
     val vs: List[String] = List()
+
+    // constructing lists
+    val fruitConst = "apples" :: ("oranges" :: ("pears" :: Nil))
+    val numsConst = 1 :: (2 :: (3 :: (4 :: Nil)))
+    val diag3Const = (1 :: (0 :: (0 :: Nil))) ::
+      (0 :: (1 :: (0 :: Nil))) ::
+      (0 :: (0 :: (1 :: Nil))) :: Nil
+    val emptyConst = Nil
+
+    // we can drop parentheses
+    val numsConst2 = 1 :: 2 :: 3 :: 4 :: Nil
+
+    // Nil.head // will throw noSuchElementException
+
+    val unsorted = List(5, 2, 7, 1, 3, 10, 4)
+    println(isort(unsorted))
   }
 
-  // constructing lists
-  val fruitConst = "apples" :: ("oranges" :: ("pears" :: Nil))
-  val numsConst = 1 :: (2 :: (3 :: (4 :: Nil)))
-  val diag3Const = (1 :: (0 :: (0 :: Nil))) ::
-              (0 :: (1 :: (0 :: Nil))) ::
-              (0 :: (0 :: (1 :: Nil))) :: Nil
-  val emptyConst = Nil
+  def isort(xs: List[Int]): List[Int] =
+    if (xs.isEmpty) Nil
+    else insert(xs.head, isort(xs.tail))
 
-  // we can drop parentheses
-  val numsConst2 = 1 :: 2 :: 3 :: 4 :: Nil
+  def insert(x: Int, xs: List[Int]): List[Int] =
+    if (xs.isEmpty || x <= xs.head) x :: xs
+    else xs.head :: insert(x, xs.tail)
 }
