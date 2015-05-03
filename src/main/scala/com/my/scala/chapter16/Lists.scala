@@ -108,6 +108,13 @@ object Lists {
     println(List(List(1, 2), List(3), List(), List(4, 5)).flatten)
     println(fruit.map(_.toCharArray).flatten)
     // List(1, 2, 3).flatten // will produce an error
+
+    // zipping lists
+    println(abcde.indices zip abcde)
+    val zipped = abcde zip List(1, 2, 3) // will drop unmatched elements
+    println(zipped)
+    println(abcde.zipWithIndex) // it's more efficient way to match position and element
+    println(zipped.unzip) // changing back tuples to list
   }
 
   /**
