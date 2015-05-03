@@ -64,6 +64,8 @@ object Lists {
     println(List(1, 2, 3, 4) ::: List(5))
 
     // xs ::: ys ::: zs will interpret as xs ::: (ys ::: zs)
+
+    println(append(List(1, 2), List(3, 4, 5)))
   }
 
   /**
@@ -93,7 +95,7 @@ object Lists {
 
   def append[T](xs: List[T], ys: List[T]): List[T] =
     xs match {
-      case List() => xs
+      case List() => ys
       case x :: xs1 => x :: append(xs1, ys)
     }
 }
