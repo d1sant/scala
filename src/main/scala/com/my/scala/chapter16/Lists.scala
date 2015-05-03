@@ -78,7 +78,20 @@ object Lists {
 
     // List().init will throw an exception
     // List().last will throw an exception
-    
+
+    println(abcde.reverse) // will produce new reversed list
+    println(abcde) // the initial won't be changed cause lists are immutable
+
+    /**
+     * a) reverse is its own inverse:
+     * xs.reverse.reverse equals xs
+     *
+     * b) reverse turns init to tail and last to head, except that the ele- ments are reversed:
+     * xs.reverse.init equals xs.tail.reverse
+     * xs.reverse.tail equals xs.init.reverse
+     * xs.reverse.head equals xs.last
+     * xs.reverse.last equals xs.head
+     */
   }
 
   /**
@@ -111,4 +124,9 @@ object Lists {
       case List() => ys
       case x :: xs1 => x :: append(xs1, ys)
     }
+
+  def rev[T](xs: List[T]): List[T] = xs match {
+    case List() => xs
+    case x :: xs1 => rev(xs1) ::: List(x)
+  }
 }
