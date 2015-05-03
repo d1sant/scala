@@ -57,6 +57,13 @@ object Lists {
 
     val unsorted2 = List(5, 2, 7, 1, 3, 10, 4)
     println(isort(unsorted2))
+
+    // concatenating two lists
+    println(List(1, 2) ::: List(3, 4, 5, 6))
+    println(List() ::: List(1, 2, 3))
+    println(List(1, 2, 3, 4) ::: List(5))
+
+    // xs ::: ys ::: zs will interpret as xs ::: (ys ::: zs)
   }
 
   /**
