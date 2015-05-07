@@ -192,6 +192,9 @@ object Lists {
     println(words2 dropWhile(_ startsWith "t"))
 
     println(List(1, 2, 3, -4, 5) span (_ > 0))
+
+    // predicates over lists
+    println(hasZeroRow(diag3))
   }
 
   /**
@@ -247,4 +250,7 @@ object Lists {
       merge(msort(less)(ys), msort(less)(zs))
     }
   }
+
+  def hasZeroRow(m: List[List[Int]]) =
+    m exists (row => row forall (_ == 0))
 }
