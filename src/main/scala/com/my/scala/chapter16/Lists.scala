@@ -175,6 +175,23 @@ object Lists {
     var sum = 0
     List(1, 2, 3, 4, 5) foreach(sum += _)
     println(sum)
+
+    // filtering lists
+    println(List(1, 2, 3, 4, 5) filter (_ % 2 == 0))
+    println(words filter (_.length == 3))
+
+    println(List(1, 2, 3, 4, 5) partition (_ % 2 == 0))
+
+    println(List(1, 2, 3, 4, 5) find (_ % 2 == 0))
+    println(List(1, 2, 3, 4, 5) find (_ <= 0))
+
+    println(List(1, 2, 3, -4, 5) takeWhile(_ > 0))
+    println(words dropWhile(_ startsWith "t"))
+
+    val words2 = List("the", "thin", "quick", "brown", "fox")
+    println(words2 dropWhile(_ startsWith "t"))
+
+    println(List(1, 2, 3, -4, 5) span (_ > 0))
   }
 
   /**
