@@ -195,6 +195,16 @@ object Lists {
 
     // predicates over lists
     println(hasZeroRow(diag3))
+
+    // folding lists
+    println(sumFold(List(1, 2, 3, 4)))
+    println(productFold(List(1, 2, 3, 4)))
+
+    println(concat(words))
+    println(concat2(words))
+
+    println(flattenLeft(List(List(1, 2, 3), List(4, 5, 6))))
+    println(flattenRight(List(List(1, 2, 3), List(4, 5, 6))))
   }
 
   /**
@@ -253,4 +263,13 @@ object Lists {
 
   def hasZeroRow(m: List[List[Int]]) =
     m exists (row => row forall (_ == 0))
+
+  def sumFold(xs: List[Int]): Int = (0 /: xs) (_ + _)
+  def productFold(xs: List[Int]): Int = (1 /: xs) (_ * _)
+
+  def concat(words: List[String]): String = ("" /: words) (_ + " " + _)
+  def concat2(words: List[String]): String = (words.head /: words.tail) (_ + " " + _)
+
+  def flattenLeft[T](xss: List[List[T]]) = (List[T]() /: xss) (_ ::: _)
+  def flattenRight[T](xss: List[List[T]]) = ( xss :\ List[T]()) (_ ::: _) // is more efficient
 }
