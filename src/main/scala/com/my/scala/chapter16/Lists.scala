@@ -205,6 +205,10 @@ object Lists {
 
     println(flattenLeft(List(List(1, 2, 3), List(4, 5, 6))))
     println(flattenRight(List(List(1, 2, 3), List(4, 5, 6))))
+
+    // sorting lists
+    println(List(1, -3, 4, 2, 6) sortWith (_ < _))
+    println(words sortWith (_.length > _.length))
   }
 
   /**
