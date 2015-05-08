@@ -271,5 +271,7 @@ object Lists {
   def concat2(words: List[String]): String = (words.head /: words.tail) (_ + " " + _)
 
   def flattenLeft[T](xss: List[List[T]]) = (List[T]() /: xss) (_ ::: _)
-  def flattenRight[T](xss: List[List[T]]) = ( xss :\ List[T]()) (_ ::: _) // is more efficient
+  def flattenRight[T](xss: List[List[T]]) = (xss :\ List[T]()) (_ ::: _) // is more efficient
+
+  def reverseLeft[T](xs: List[T]) = (List[T]() /: xs) {(ys, y) => y :: ys}
 }
