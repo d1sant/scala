@@ -209,6 +209,30 @@ object Lists {
     // sorting lists
     println(List(1, -3, 4, 2, 6) sortWith (_ < _))
     println(words sortWith (_.length > _.length))
+
+    // apply method
+    println(List.apply(1, 2, 3))
+
+    // range method
+    println(List.range(1, 5))
+    println(List.range(1, 9, 2))
+    println(List.range(9, 1, -3))
+
+    // fill method
+    println(List.fill(5)('a'))
+    println(List.fill(3)("hello"))
+    println(List.fill(2, 3)('b'))
+
+    // tabulate method
+    val square = List.tabulate(5)(n => n * n)
+    println(square)
+    val multiplication = List.tabulate(5, 5)(_ * _)
+    println(multiplication)
+
+    // concat method
+    println(List.concat(List('a', 'b'), List('c')))
+    println(List.concat(List(), List('b'), List('c')))
+    println(List.concat())
   }
 
   /**
