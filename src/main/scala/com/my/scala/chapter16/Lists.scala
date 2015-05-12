@@ -238,6 +238,16 @@ object Lists {
     println((List(10, 20), List(3, 4, 5)).zipped.map(_ * _))
     println((List("abc", "de"), List(3, 2)).zipped.forall(_.length == _))
     println((List("abc", "de"), List(3, 2)).zipped.exists(_.length != _))
+
+    // scala's type inference algorithm
+    println(msort((x: Char, y: Char) => x > y)(abcde))
+    println(abcde sortWith(_ > _))
+
+    // msort(_ > _)(abcde) // won't work cause of missing type error
+    msort[Char](_ > _)(abcde)
+
+    // swapping parameters for type inference
+    println(msortSwapped(abcde)(_ > _))
   }
 
   /**
@@ -307,4 +317,21 @@ object Lists {
   def flattenRight[T](xss: List[List[T]]) = (xss :\ List[T]()) (_ ::: _) // is more efficient
 
   def reverseLeft[T](xs: List[T]) = (List[T]() /: xs) {(ys, y) => y :: ys}
+
+  def msortSwapped[T](xs: List[T])(less: (T, T) => Boolean): List[T] = {
+    def merge(xs: List[T], ys: List[T]): List[T] =
+      (xs, ys) match {
+        case (Nil, _) => ys
+        case (_, Nil) => xs
+        case (x :: xs1, y :: ys1) =>
+          if (less(x, y)) x :: merge(xs1, ys)
+          else y :: merge(xs, ys1)
+      }
+    val n = xs.length / 2
+    if (n == 0) xs
+    else {
+      val (ys, zs) = xs splitAt n
+      merge(msort(less)(ys), msort(less)(zs))
+    }
+  }
 }
