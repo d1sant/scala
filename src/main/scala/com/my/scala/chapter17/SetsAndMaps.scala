@@ -8,7 +8,7 @@ object SetsAndMaps {
     val mutaSet = mutable.Set(1, 2, 3)
     println(mutaSet)
 
-    // Using sets
+    println("-- Using sets")
     val text = "See Spot run. Run, Spot. Run!"
     println(text)
     val wordsArray = text.split("[ !,.]+")
@@ -19,7 +19,36 @@ object SetsAndMaps {
     println(words)
     println(words.size)
 
-    // Using maps
+    println("-- Common operations with sets")
+    val nums = Set(1, 2, 3) // creates immutable set
+    println(nums)
+
+    println(nums + 5) // adds an element
+    println(nums - 3) // removes an element
+
+    println(nums ++ List(5, 6)) // adds multiple elements
+    println(nums -- List(1, 2)) // removes multiple elements
+
+    println(nums & Set(1, 3, 5, 7)) // intersection of two sets (returns Set(1, 3))
+
+    println(nums.size) // size of set
+    println(nums.contains(3)) // checks inclusion
+
+    val words2 = mutable.Set.empty[String]
+    words2 += "the" // adds element
+    println(words2)
+    words2 -= "the" // removes element
+    println(words2)
+
+    words2 ++= List("do", "re", "mi") // adds multiple elements
+    println(words2)
+    words2 --= List("do", "re") // removes multiple elements
+    println(words2)
+
+    words2.clear() // removes all elements
+    println(words2)
+
+    println("-- Using maps")
     val map = mutable.Map.empty[String, Int]
     map("hello") = 1
     map("three") = 2
