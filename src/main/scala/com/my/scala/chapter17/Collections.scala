@@ -48,5 +48,10 @@ object Collections {
 
     println(abuf.length)
     println(abuf(0))
+
+    // Strings (via StringsOps)
+    def hasUpperCase(s: String) = s.exists(_.isUpper) // implicit conversion to StringOps
+    println(hasUpperCase("Robert Frost"))
+    println(hasUpperCase("e e cummings bla bla"))
   }
 }
