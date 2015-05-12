@@ -88,6 +88,24 @@ object SetsAndMaps {
     println(words3)
     words3 --= List("one", "two") // removes multiple entries
     println(words3)
+
+    // Default set and map
+    // Mutable set and map implemented as hashset and hashmap
+
+    // Immutable set and map depend on the size of elements:
+    // 0 ->         scala.collection.immutable.EmptySet
+    // 1 ->         scala.collection.immutable.Set1
+    // 2 ->         scala.collection.immutable.Set2
+    // 3 ->         scala.collection.immutable.Set3
+    // 4 ->         scala.collection.immutable.Set4
+    // 5 or more -> scala.collection.immutable.HashSet
+
+    // 0 ->         scala.collection.immutable.EmptyMap
+    // 1 ->         scala.collection.immutable.Map1
+    // 2 ->         scala.collection.immutable.Map2
+    // 3 ->         scala.collection.immutable.Map3
+    // 4 ->         scala.collection.immutable.Map4
+    // 5 or more -> scala.collection.immutable.HashMap
   }
 
   def countWords(text: String) = {
