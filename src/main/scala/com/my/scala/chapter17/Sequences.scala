@@ -1,10 +1,9 @@
 package com.my.scala.chapter17
 
-object Collections {
+object Sequences {
 
   def main(args: Array[String]) {
 
-    // Sequences
     // Lists:
     val colors = List("red", "blue", "green")
     println(colors)
