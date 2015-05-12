@@ -18,5 +18,27 @@ object SetsAndMaps {
     for (word <- wordsArray) words += word.toLowerCase
     println(words)
     println(words.size)
+
+    // Using maps
+    val map = mutable.Map.empty[String, Int]
+    map("hello") = 1
+    map("three") = 2
+    println(map)
+    println(map("hello")) // reading from map
+
+    println(countWords(text))
+  }
+
+  def countWords(text: String) = {
+    import scala.collection.mutable
+    val counts = mutable.Map.empty[String, Int]
+    for (rawWord <- text.split("[ ,!.]+")) {
+      val word = rawWord.toLowerCase
+      val oldCount =
+        if (counts.contains(word)) counts(word)
+        else 0
+      counts += (word -> (oldCount + 1))
+    }
+    counts
   }
 }
