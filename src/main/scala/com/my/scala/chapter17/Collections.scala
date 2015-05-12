@@ -20,5 +20,20 @@ object Collections {
 
     fiveInts(0) = fiveToOne(4)
     println(fiveInts.mkString(" ,"))
+
+    // List buffers:
+    import scala.collection.mutable.ListBuffer
+    val buf = new ListBuffer[Int]
+    println(buf)
+
+    buf += 1
+    println(buf)
+    buf += 2
+    println(buf)
+
+    3 +=: buf
+    println(buf)
+
+    println(buf.toList)
   }
 }
