@@ -35,5 +35,18 @@ object Collections {
     println(buf)
 
     println(buf.toList)
+
+    // Array buffers:
+    import scala.collection.mutable.ArrayBuffer
+    val abuf = new ArrayBuffer[Int]()
+    println(abuf)
+
+    abuf += 12
+    println(abuf)
+    abuf += 15
+    println(abuf)
+
+    println(abuf.length)
+    println(abuf(0))
   }
 }
