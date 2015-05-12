@@ -20,7 +20,7 @@ object SetsAndMaps {
     println(words.size)
 
     println("-- Common operations with sets")
-    val nums = Set(1, 2, 3) // creates immutable set
+    val nums = Set(1, 2, 3) // creates an immutable set
     println(nums)
 
     println(nums + 5) // adds an element
@@ -31,13 +31,13 @@ object SetsAndMaps {
 
     println(nums & Set(1, 3, 5, 7)) // intersection of two sets (returns Set(1, 3))
 
-    println(nums.size) // size of set
-    println(nums.contains(3)) // checks inclusion
+    println(nums.size) // size of the set
+    println(nums.contains(3)) // checks for inclusion
 
     val words2 = mutable.Set.empty[String]
-    words2 += "the" // adds element
+    words2 += "the" // adds an element
     println(words2)
-    words2 -= "the" // removes element
+    words2 -= "the" // removes an element
     println(words2)
 
     words2 ++= List("do", "re", "mi") // adds multiple elements
@@ -56,6 +56,38 @@ object SetsAndMaps {
     println(map("hello")) // reading from map
 
     println(countWords(text))
+
+    println("-- Common operations with maps")
+    val nums2 = Map("i" -> 1, "ii" -> 2) // creates an immutable map
+    println(nums2)
+
+    println(nums2 + ("vi" -> 6)) // adds an entry
+    println(nums2 - "ii") // removes an entry
+
+    println(nums2 ++ List("iii" -> 3, "v" -> 5)) // adds multiple entries
+    println(nums2 -- List("i", "ii")) // removes multiple entries
+
+    println(nums2.size) // size of the map
+    println(nums2.contains("ii")) // checks for inclusion
+    println(nums2("ii")) // retrieves the value at a specified key
+
+    println(nums2.keys) // returns iterable over "i" and "ii"
+    println(nums2.keySet) // returns the keys as a set
+    println(nums2.values) // returns the values
+    println(nums.isEmpty) // indicates whether the map is empty
+
+    val words3 = mutable.Map.empty[String, Int] // creates an empty, mutable set
+    println(words3)
+
+    words3 += ("one" -> 1) // adds a map entry
+    println(words3)
+    words3 -= "one"
+    println(words3) // removes a map entry
+
+    words3 ++= List("one" -> 1, "two" -> 2, "three" -> 3) // adds multiple entries
+    println(words3)
+    words3 --= List("one", "two") // removes multiple entries
+    println(words3)
   }
 
   def countWords(text: String) = {
