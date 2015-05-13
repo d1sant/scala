@@ -121,6 +121,35 @@ object SetsAndMaps {
 
     tm += (2 -> 'x')
     println(tm)
+
+    println("-- Selecting mutable vs immutable collections")
+    val people = Set("Nancy", "Jane")
+    println(people)
+    // people += "Bob" // will produce an error: reassignment to val
+
+    var people2 = Set("Nancy", "Jane")
+    println(people2)
+    people2 += "Bob"
+    println(people2)
+
+    people2 -= "Jane"
+    println(people2)
+    people2 ++= List("Tom", "Harry")
+    println(people2)
+
+    // to move from immutable to mutable we need only to import
+    import scala.collection.mutable.Map // only change needed!
+    var capital = Map("US" -> "Washington", "France" -> "Paris")
+    capital += ("Japan" -> "Tokio")
+    println(capital)
+    println(capital("France"))
+
+    var roughlyPI = 3.0
+    println(roughlyPI)
+    roughlyPI += 0.1
+    println(roughlyPI)
+    roughlyPI += 0.04
+    println(roughlyPI)
   }
 
   def countWords(text: String) = {
