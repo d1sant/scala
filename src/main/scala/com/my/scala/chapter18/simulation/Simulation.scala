@@ -1,4 +1,4 @@
-package com.my.scala.chapter18
+package com.my.scala.chapter18.simulation
 
 abstract class Simulation {
   type Action = () => Unit
