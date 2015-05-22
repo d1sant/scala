@@ -4,7 +4,7 @@ object Queues {
 
   def main(args: Array[String]) {
 
-    val q = new Queue(List(1, 2), List(3))
+    val q = new Queue(1, 2, 3)
     println(q)
 
     val q1 = q enqueue 4
