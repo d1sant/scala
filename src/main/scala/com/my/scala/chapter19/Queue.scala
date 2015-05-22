@@ -13,6 +13,7 @@ class Queue[T] private (
       new Queue(trailing.reverse, Nil)
     else
       this
+
   def head = mirror.leading.head
 
   def tail = {
