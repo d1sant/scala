@@ -26,6 +26,12 @@ object Queues {
     // val c2: Cell[Any] = c1 // won't compile cause of non-covariant
     // c2.set(1)
     val s: String = c1.get
+
+    // variance of arrays
+    val a1 = Array("abc")
+    // val a2: Array[Any] = a1 won't compile cause of an error: type mismatch
+
+    val a2: Array[Object] = a1.asInstanceOf[Array[Object]]
   }
 
   // def doesNotCompile(q: Queue2) = {} // won't compile cause type parameter wasn't defined
