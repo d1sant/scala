@@ -1,9 +1,11 @@
 package com.my.scala.chapter19
 
 /**
-  * Another implementation of Queue using trait and inner private class
-  */
-trait Queue2[T] {
+ * Another implementation of Queue using trait and inner private class.
+ * We can make Queue2 covariant (flexible) by adding '+' before T, like: trait Queue2[+T]
+ * or contravariant by adding '-' before T, like: trait Queue2[-T]
+ */
+trait Queue2[T] { //
   def head: T
   def tail: Queue2[T]
   def enqueue(x: T): Queue2[T]

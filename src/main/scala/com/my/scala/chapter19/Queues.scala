@@ -17,5 +17,26 @@ object Queues {
     val q3 = q2 enqueue 8
     println(q3)
     println(q2)
+
+    // example of covariant
+    doesCompile(Queue2("abc"))
+    // doesCompile(Queue2(1, 2, 3)) // won't compile cause Int is subtype of AnyVal
+
+    val c1 = new Cell[String]("abc")
+    // val c2: Cell[Any] = c1 // won't compile cause of non-covariant
+    // c2.set(1)
+    val s: String = c1.get
+  }
+
+  // def doesNotCompile(q: Queue2) = {} // won't compile cause type parameter wasn't defined
+
+  def doesCompileInt(q: Queue2[Int]) = {}
+  def doesCompileString(q: Queue2[String]) = {}
+  def doesCompile(q: Queue2[AnyRef]) = {}
+
+  class Cell[T](init: T) {
+    private[this] var current = init
+    def get = current
+    def set(x: T) { current = x }
   }
 }
