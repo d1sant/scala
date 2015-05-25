@@ -38,6 +38,10 @@ object Queues {
     val x: Queue[Int] = new StrangeIntQueue
     // println(x.enqueue("abc)) // won't pass
     println(x.enqueue(9))
+
+    // actually the following is a little bit strange ...
+    val y = new QueueLowerBound[Int](List(1), List(2))
+    println(y enqueue "abc")
   }
 
   // def doesNotCompile(q: Queue2) = {} // won't compile cause type parameter wasn't defined
@@ -66,5 +70,6 @@ object Queues {
   class QueueLowerBound[+T] (private val leading: List[T], private val trailing: List[T]) {
     def enqueue[U >: T](x: U) =
       new QueueLowerBound[U](leading, x :: trailing)
+    override def toString = (leading ::: trailing).toString()
   }
 }
