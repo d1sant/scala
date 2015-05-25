@@ -62,4 +62,9 @@ object Queues {
   abstract class Cat[-T, +U] {
     def meow[W](volume: T, listener: Cat[U, T]): Cat[Cat[U, T], U]
   }
+
+  class QueueLowerBound[+T] (private val leading: List[T], private val trailing: List[T]) {
+    def enqueue[U >: T](x: U) =
+      new QueueLowerBound[U](leading, x :: trailing)
+  }
 }
