@@ -32,6 +32,12 @@ object Queues {
     // val a2: Array[Any] = a1 won't compile cause of an error: type mismatch
 
     val a2: Array[Object] = a1.asInstanceOf[Array[Object]]
+
+    // checking variance annotations
+    // val x: Queue[Any] = new StrangeIntQueue // won't compile
+    val x: Queue[Int] = new StrangeIntQueue
+    // println(x.enqueue("abc)) // won't pass
+    println(x.enqueue(9))
   }
 
   // def doesNotCompile(q: Queue2) = {} // won't compile cause type parameter wasn't defined
@@ -44,5 +50,16 @@ object Queues {
     private[this] var current = init
     def get = current
     def set(x: T) { current = x }
+  }
+
+  class StrangeIntQueue extends Queue[Int] {
+    override def enqueue(x: Int) = {
+      println(math.sqrt(x))
+      super.enqueue(x)
+    }
+  }
+
+  abstract class Cat[-T, +U] {
+    def meow[W](volume: T, listener: Cat[U, T]): Cat[Cat[U, T], U]
   }
 }

@@ -5,7 +5,7 @@ class Queue[T] private (
   private val trailing: List[T]
 ) {
 
-  // def this() = this(Nil, Nil)
+  def this() = this(Nil, Nil)
   // def this(elems: T*) = this(elems.toList, Nil)
 
   private def mirror =
