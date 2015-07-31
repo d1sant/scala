@@ -11,6 +11,6 @@ abstract class Apple extends Fruit {
 }
 
 abstract class BadApple extends Fruit {
-  def v: String // ERROR: cannot override a 'val' with a 'def'
+  // def v: String // ERROR: cannot override a 'val' with a 'def'
   def m: String
 }
