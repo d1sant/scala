@@ -28,5 +28,9 @@ object Animals {
     println(new o1.Inner)
 
     // new Outer#Inner // will through an error of illegal prefix for a construct
+
+    class Pasture {
+      val animals: List[Animal2 { type SuitableFood = Grass2}] = Nil
+    }
   }
 }
