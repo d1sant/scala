@@ -13,3 +13,9 @@ class Cow2 extends Animal2 {
 }
 
 class Fish2 extends Food2
+
+class DogFood2 extends Food2
+class Dog2 extends Animal2 {
+  type SuitableFood = DogFood2
+  override def eat(food: DogFood2) = {}
+}
