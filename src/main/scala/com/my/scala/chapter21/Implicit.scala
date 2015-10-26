@@ -35,5 +35,10 @@ object Implicit {
     button.addActionListener(
       (_: ActionEvent) => println("Pressed!")
     )
+
+    val i: Int = 3.5
+    print(i)
   }
+
+  implicit def doubleToInt(x: Double): Int = x.toInt
 }
