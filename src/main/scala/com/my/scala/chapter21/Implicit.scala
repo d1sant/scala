@@ -60,6 +60,8 @@ object Implicit {
     println(maxListImplParm(List(1,5,10,3)))
     println(maxListImplParm(List(1.5,5.2,10.7,3.14159)))
     println(maxListImplParm(List("one", "two", "three")))
+
+    // printLength(12) // ambiguous conversion
   }
 
   implicit def doubleToInt(x: Double): Int = x.toInt
@@ -123,7 +125,7 @@ object Implicit {
         else maxRest
     }
 
-  def maxList[T](elements: List[T])
+  def maxList1[T](elements: List[T])
                 (implicit converter: T => Ordered[T]): T =
     elements match {
       // the same body
@@ -131,7 +133,7 @@ object Implicit {
       // the rest is the same
     }
 
-  def maxList[T](elements: List[T])
+  def maxList2[T](elements: List[T])
                 (implicit iceCream: T => Ordered[T]): T =
     elements match {
       // the same body
@@ -139,14 +141,19 @@ object Implicit {
       // the rest is the same
     }
 
-  def maxList[T <% Ordered[T]](elements: List[T]): T =
+  def maxList3[T <% Ordered[T]](elements: List[T]): T =
     elements match {
       case List() =>
         throw new IllegalArgumentException("empty list!")
       case List(x) => x
       case x :: rest =>
-        val maxRest = maxList(rest) // (orderer) is implicit
+        val maxRest = maxList3(rest) // (orderer) is implicit
         if (x > maxRest) x          // orderer(x) is implicit
         else maxRest
     }
+
+  def printLength(seq: Seq[Int]) = println(seq.length)
+  implicit def intToRange(i: Int) = 1 to i
+  implicit def intToDigits(i: Int) = i.toString.toList.map(_.toInt)
+
 }
