@@ -110,4 +110,43 @@ object Implicit {
         if (orderer(x) > maxRest) x
         else maxRest
   }
+
+  def maxList[T](elements: List[T])
+                (implicit orderer: T => Ordered[T]): T =
+    elements match {
+      case List() =>
+        throw new IllegalArgumentException("empty list!")
+      case List(x) => x
+      case x :: rest =>
+        val maxRest = maxList(rest) // (orderer) is implicit
+        if (x > maxRest) x          // orderer(x) is implicit
+        else maxRest
+    }
+
+  def maxList[T](elements: List[T])
+                (implicit converter: T => Ordered[T]): T =
+    elements match {
+      // the same body
+      case List(x) => x
+      // the rest is the same
+    }
+
+  def maxList[T](elements: List[T])
+                (implicit iceCream: T => Ordered[T]): T =
+    elements match {
+      // the same body
+      case List(x) => x
+      // the rest is the same
+    }
+
+  def maxList[T <% Ordered[T]](elements: List[T]): T =
+    elements match {
+      case List() =>
+        throw new IllegalArgumentException("empty list!")
+      case List(x) => x
+      case x :: rest =>
+        val maxRest = maxList(rest) // (orderer) is implicit
+        if (x > maxRest) x          // orderer(x) is implicit
+        else maxRest
+    }
 }
