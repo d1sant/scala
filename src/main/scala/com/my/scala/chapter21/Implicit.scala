@@ -62,6 +62,10 @@ object Implicit {
     println(maxListImplParm(List("one", "two", "three")))
 
     // printLength(12) // ambiguous conversion
+
+    // Debugging implicit: the following code won't compile cause of the absence of wrapString method
+    // val chars: List[Char] = "xyz" // implicit usage: can't figure out the problem
+    // val chars: List[Char] = wrapStrip("xyz") // explicit usage: the problem is much clear
   }
 
   implicit def doubleToInt(x: Double): Int = x.toInt
