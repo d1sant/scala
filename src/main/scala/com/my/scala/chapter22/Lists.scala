@@ -30,6 +30,28 @@ object Lists {
     // equals (because ::: binds to the right)
 
     // this.:::(prefix.tail).::(prefix.head)
+
+    // The ListBuffer class
+
+    def incAll(xs: List[Int]): List[Int] = xs match {
+      case List() => List()
+      case x :: xs1 => x + 1 :: incAll(xs1)  
+    }
+    // shortcoming: this is not tail recursive - each call requires a new stack frame
+
+    def incAll2(xs: List[Int]) = {
+      var result = List[Int]() // a very inefficient approach
+      for (x <- xs) result = result ::: List(x + 1)
+      result
+    }
+
+    import scala.collection.mutable.ListBuffer
+    def incAll3(xs: List[Int]) = {
+      val buf = new ListBuffer[Int]
+      for (x <- xs) buf += x + 1
+      buf.toList
+    }
+
   }
 
   abstract class Fruit
