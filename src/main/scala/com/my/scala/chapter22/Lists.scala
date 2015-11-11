@@ -35,7 +35,7 @@ object Lists {
 
     def incAll(xs: List[Int]): List[Int] = xs match {
       case List() => List()
-      case x :: xs1 => x + 1 :: incAll(xs1)  
+      case x :: xs1 => x + 1 :: incAll(xs1)
     }
     // shortcoming: this is not tail recursive - each call requires a new stack frame
 
@@ -52,6 +52,8 @@ object Lists {
       buf.toList
     }
 
+    // Functional on the outside
+    // ys.drop(2).tail = Nil // can't do this in Scala
   }
 
   abstract class Fruit
