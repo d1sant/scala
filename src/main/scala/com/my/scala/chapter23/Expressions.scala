@@ -14,6 +14,12 @@ object Expressions {
 
     // easies way to comprehend:
     println(for (p <- persons; if !p.isMale; c <- p.children) yield (p.name, c.name))
+
+    // for ( seq ) yield expr
+    // seq is a sequence of generators, definitions, and filters
+
+    // several generators: later generators vary more rapidly than earlier ones
+    println(for (x <- List(1, 2); y <- List("one", "two")) yield (x, y))
   }
 
   case class Person(name: String, isMale: Boolean, children: Person*)
