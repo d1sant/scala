@@ -157,6 +157,12 @@ object Expressions {
 
   case class Book(title: String, authors: String*)
 
+  abstract class C[A] {
+    def map[B](f: A => B): C[B]
+    def flatMap[B](f: A => C[B]): C[B]
+    def withFilter(p: A => Boolean): C[A]
+    def foreach(b: A => Unit): Unit
+  }
 }
 
 object Demo {
