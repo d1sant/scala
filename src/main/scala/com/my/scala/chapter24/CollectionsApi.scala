@@ -1,7 +1,7 @@
 package com.my.scala.chapter24
 
 import scala.collection.immutable.HashMap
-import scala.collection.{LinearSeq, SortedSet}
+import scala.collection.{BitSet, LinearSeq, SortedSet}
 import scala.collection.mutable.Buffer
 
 object CollectionsApi {
@@ -95,7 +95,52 @@ object CollectionsApi {
     // removals
     println(buf -= 0)
     // cloning
-    print(buf.clone)
+    println(buf.clone)
+
+    // Sets
+    val fruit = Set("apple", "orange", "peach", "banana")
+    println(fruit("peach"))
+    println(fruit("potato"))
+    // additions:
+    println(fruit + "pinapple")
+    println(fruit + ("kiwi", "strawberry"))
+    println(fruit ++ Set("kiwi", "strawberry"))
+    // removals:
+    println(fruit - "apple")
+    println(fruit - ("apple", "orange"))
+    println(fruit -- Set("apple", "orange"))
+    println(fruit.empty)
+    // binary:
+    println(fruit & Set("orange", "banana", "kiwi"))
+    println(fruit intersect Set("orange", "banana", "kiwi"))
+    println(fruit | Set("orange", "banana", "kiwi"))
+    println(fruit union Set("orange", "banana", "kiwi"))
+    println(fruit &~ Set("orange", "banana", "kiwi"))
+    println(fruit diff Set("orange", "banana", "kiwi"))
+
+    var s = Set(1, 2, 3)
+    println(s)
+    s += 4; s -= 2
+    println(s)
+
+    val sm = collection.mutable.Set(1, 2, 3)
+    println(sm)
+    sm += 4
+    println(sm)
+    sm -= 2
+    println(sm)
+
+    val myOrdering = Ordering.fromLessThan[String](_ > _)
+    println(myOrdering)
+
+    import scala.collection.immutable.TreeSet
+    println(TreeSet.empty(myOrdering))
+
+    val set = TreeSet.empty[String]
+    val numbers = set + ("one", "two", "three", "four")
+    println(numbers)
+    println(numbers range ("one", "two"))
+    println(numbers from "three")
   }
 
   sealed abstract class TreeT extends Traversable[Int] {
