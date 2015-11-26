@@ -141,6 +141,31 @@ object CollectionsApi {
     println(numbers)
     println(numbers range ("one", "two"))
     println(numbers from "three")
+
+    // Maps
+    println(Map("x" -> 24, "y" -> 25, "z" -> 26)) // the same as following due to implicit conversion
+    println(Map(("x",24), ("y",25), ("z",26)))
+
+    def f(x: String) = {
+      println("taking my time."); Thread.sleep(100)
+      x.reverse
+    }
+
+    val cache = collection.mutable.Map[String, String]()
+    def cachedF(s: String) = cache.getOrElseUpdate(s, f(s))
+    println(cachedF("abc"))
+    println(cachedF("abc"))
+    println(cachedFD("def"))
+    println(cachedFD("def"))
+
+    // the same but directly
+    def cachedFD(arg: String) = cache get arg match {
+      case Some(result) => result
+      case None =>
+        val result = f(arg)
+        cache(arg) = result
+        result
+    }
   }
 
   sealed abstract class TreeT extends Traversable[Int] {
