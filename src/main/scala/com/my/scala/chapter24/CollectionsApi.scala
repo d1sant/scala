@@ -166,6 +166,19 @@ object CollectionsApi {
         cache(arg) = result
         result
     }
+
+    // Synchronized sets and maps
+    val capitals = MapMaker.makeMap
+    println(capitals)
+    capitals ++= List("US" -> "Washington", "France" -> "Paris", "Japan" -> "Tokyo")
+    println(capitals)
+    println(capitals("Japan"))
+    println(capitals("New Zealand"))
+    println(capitals += ("New Zealand" -> "Wellington"))
+    println(capitals("New Zealand"))
+
+    import scala.collection.mutable
+    val synchroSet = new mutable.HashSet[Int] with mutable.SynchronizedSet[Int]
   }
 
   sealed abstract class TreeT extends Traversable[Int] {
@@ -182,6 +195,16 @@ object CollectionsApi {
     def iterator: Iterator[Int] = this match {
       case Node(elem) => Iterator.single(elem)
       case Branch(l, r) => l.iterator ++ r.iterator
+    }
+  }
+
+  import scala.collection.mutable.{Map, SynchronizedMap, HashMap}
+  object MapMaker {
+    def makeMap: Map[String, String] = {
+      new HashMap[String, String] with SynchronizedMap[String, String] {
+        override def default(key: String) =
+          "Why do you want to know"
+      }
     }
   }
 }
