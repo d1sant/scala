@@ -179,6 +179,79 @@ object CollectionsApi {
 
     import scala.collection.mutable
     val synchroSet = new mutable.HashSet[Int] with mutable.SynchronizedSet[Int]
+
+    // Concrete immutable collection classes
+    // streams:
+    val str = 1 #:: 2 #:: 3 #:: Stream.empty
+    println(str)
+
+    def fibFrom(a: Int, b: Int): Stream[Int] =
+      a #:: fibFrom(b, a + b)
+    val fibs = fibFrom(1, 1).take(7)
+    println(fibs.toList)
+
+    // vectors:
+    val vec = scala.collection.immutable.Vector.empty
+    println(vec)
+    val vec2 = vec :+ 1 :+ 2
+    println(vec2)
+    val vec3 = 100 +: vec2
+    println(vec3)
+    println(vec3(0))
+
+    val vec4 = Vector(1, 2, 3)
+    println(vec4)
+    println(vec4 updated (2, 4))
+    println(vec4)
+
+    // vectors are the default implementation of immutable indexed sequences
+    println(collection.immutable.IndexedSeq(1, 2, 3))
+
+    // stacks:
+    val stack = scala.collection.immutable.Stack.empty
+    println(stack)
+    val hasOne = stack.push(1)
+    println(hasOne)
+    println(stack)
+    println(hasOne.top)
+    println(hasOne.pop)
+
+    // queues:
+    val empty = scala.collection.immutable.Queue[Int]()
+    println(empty)
+    val has1 = empty.enqueue(1)
+    println(has1)
+    val has123 = has1.enqueue(List(2, 3))
+    println(has123)
+    val (element, has23) = has123.dequeue
+    println(element)
+    println(has23)
+
+    // ranges:
+    println(1 to 3)
+    println(5 to 14 by 3)
+    println(1 until 3)
+
+    // hash tries
+    // are a standard way to implement immutable sets and mans efficiently
+
+    // red-black trees
+    val treeSet = collection.immutable.TreeSet.empty[Int]
+    println(treeSet)
+    println(treeSet + 1 + 3 + 3)
+
+    // bit sets
+    val bits = scala.collection.immutable.BitSet.empty
+    println(bits)
+    val moreBits = bits + 3 + 4 + 4
+    println(moreBits)
+    println(moreBits(3))
+    println(moreBits(0))
+
+    // List maps
+    val map = collection.immutable.ListMap(1 -> "one", 2 -> "two")
+    println(map)
+    println(map(2))
   }
 
   sealed abstract class TreeT extends Traversable[Int] {
