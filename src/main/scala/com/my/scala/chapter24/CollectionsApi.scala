@@ -1,5 +1,6 @@
 package com.my.scala.chapter24
 
+import scala.StringBuilder
 import scala.collection.immutable.HashMap
 import scala.collection.{BitSet, LinearSeq, SortedSet}
 import scala.collection.mutable.Buffer
@@ -252,6 +253,86 @@ object CollectionsApi {
     val map = collection.immutable.ListMap(1 -> "one", 2 -> "two")
     println(map)
     println(map(2))
+
+    // Concrete mutable collection classes
+    // array buffers:
+    val arrayBuf = collection.mutable.ArrayBuffer.empty[Int]
+    println(arrayBuf)
+    arrayBuf += 1
+    println(arrayBuf)
+    arrayBuf += 10
+    println(arrayBuf)
+    println(arrayBuf.toArray)
+
+    // list buffers:
+    val listBuf = collection.mutable.ListBuffer.empty[Int]
+    println(listBuf)
+    listBuf += 1
+    println(listBuf)
+    listBuf += 10
+    println(listBuf)
+    println(listBuf.toList)
+
+    // string builders:
+    val stringBuilder = new StringBuilder()
+    println(stringBuilder)
+    stringBuilder  += 'a'
+    println(stringBuilder)
+    stringBuilder ++= "bcdef"
+    println(stringBuilder)
+    println(stringBuilder.toString())
+
+    // LinkedList
+    // DoubleLinkedList
+    // MutableList
+
+    // Queues:
+    val mqueue = new mutable.Queue[String]()
+    println(mqueue)
+    mqueue += "a"
+    println(mqueue)
+    mqueue ++= List("b", "c")
+    println(mqueue)
+    println(mqueue.dequeue())
+    println(mqueue)
+
+    // array sequences
+
+    // stacks:
+    val mstack = new scala.collection.mutable.Stack[Int]
+    println(mstack)
+    mstack.push(1)
+    println(mstack)
+    mstack.push(2)
+    println(mstack)
+    println(mstack.top)
+    println(mstack)
+    println(mstack.pop)
+    println(mstack)
+
+    // array stacks
+
+    // hash tables:
+    val htab = collection.mutable.HashMap.empty[Int, String]
+    println(htab)
+    htab += (1 -> "make a web site")
+    println(htab)
+    htab += (3 -> "profit!")
+    println(htab)
+    println(htab(1))
+    println(htab contains 2)
+
+    // weak hash maps
+
+    // concurrent maps
+
+    // mutable bit sets
+    val mbits = scala.collection.mutable.BitSet.empty
+    println(mbits)
+    println(mbits += 1)
+    println(mbits)
+    println(mbits += 3)
+    println(mbits)
   }
 
   sealed abstract class TreeT extends Traversable[Int] {
