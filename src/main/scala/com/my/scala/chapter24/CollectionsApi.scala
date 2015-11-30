@@ -2,7 +2,7 @@ package com.my.scala.chapter24
 
 import scala.StringBuilder
 import scala.collection.immutable.{HashSet, HashMap}
-import scala.collection.{BitSet, LinearSeq, SortedSet}
+import scala.collection.{SeqView, BitSet, LinearSeq, SortedSet}
 import scala.collection.mutable.Buffer
 
 object CollectionsApi {
@@ -405,6 +405,41 @@ object CollectionsApi {
     println(amap(abuf))
     abuf(0) += 1
     // amap(abuf) // throws NoSuchElementException due to changed hash code
+
+    // Views
+    def lazyMap[T, U](coll: Iterable[T], f: T => U) =
+      new Iterable[U] {
+        def iterator = coll.iterator map f
+      }
+
+    val v = Vector(1 to 10: _*)
+    println(v)
+    println(v map (_ + 1) map (_ * 2))
+    println((v.view map (_ + 1) map (_ * 2)).force)
+    val vv = v.view
+    println(vv)
+    val vv1 = vv map (_ + 1)
+    println(vv1)
+    val vv2 = vv1 map (_ * 2)
+    println(vv2)
+    println(vv2.force)
+
+    def isPalindrome(x: String) = x == x.reverse
+    def findPalindrome(s: Seq[String]) = s find isPalindrome
+
+    // findPalindrome(words take 1000000) // inefficient
+    // findPalindrome(words.view take 1000000) // lazy efficient way
+
+    val arr = (0 to 9).toArray
+    println(arr.toList)
+    val subarr = arr.view.slice(3, 6)
+    println(subarr)
+
+    def negate(xs: collection.mutable.Seq[Int]) =
+      for (i <- 0 until xs.length) xs(i) = -xs(i)
+
+    negate(subarr)
+    println(arr.toList)
   }
 
   sealed abstract class TreeT extends Traversable[Int] {
