@@ -1,7 +1,7 @@
 package com.my.scala.chapter24
 
 import scala.StringBuilder
-import scala.collection.immutable.HashMap
+import scala.collection.immutable.{HashSet, HashMap}
 import scala.collection.{BitSet, LinearSeq, SortedSet}
 import scala.collection.mutable.Buffer
 
@@ -393,6 +393,18 @@ object CollectionsApi {
     println(astr slice (1, 4))
     val as: Seq[Char] = astr
     println(as)
+
+    // Equality
+    println(List(1, 2, 3) == Vector(1, 2, 3))
+    println(HashSet(1, 2) == TreeSet(2, 1))
+
+    import collection.mutable.{HashMap, ArrayBuffer}
+    val abuf = ArrayBuffer(1, 2, 3)
+    println(abuf)
+    val amap = mutable.HashMap(abuf -> 3)
+    println(amap(abuf))
+    abuf(0) += 1
+    // amap(abuf) // throws NoSuchElementException due to changed hash code
   }
 
   sealed abstract class TreeT extends Traversable[Int] {
