@@ -333,6 +333,56 @@ object CollectionsApi {
     println(mbits)
     println(mbits += 3)
     println(mbits)
+
+    // Arrays
+    val a1 = Array(1, 2, 3)
+    println(a1)
+    val a2 = a1 map (_ * 3)
+    println(a2)
+    val a3 = a2 filter (_ % 2 != 0)
+    println(a3)
+    println(a3.reverse)
+
+    val aseq: Seq[Int] = a1
+    println(aseq)
+
+    val a4: Array[Int] = aseq.toArray
+    println(a4)
+    println(a1 eq a4)
+
+    val aseq2: Seq[Int] = a1
+    println(aseq2)
+    println(aseq2.reverse)
+    val ops: collection.mutable.ArrayOps[Int] = a1
+    println(ops.reverse)
+
+    // implicit conversion
+    println(a1.reverse) // the same as following
+    println(intArrayOps(a1).reverse)
+
+    // This is wrong!
+    /*
+    def evenElems[T](xs: Vector[T]): Array[T] = {
+      val arr = new Array[T]((xs.length + 1) / 2)
+      for (i <- 0 until xs.length by 2)
+        arr(i / 2) = xs(i)
+      arr
+    }
+    */
+
+    // This works
+    def evenElems[T: ClassManifest](xs: Vector[T]): Array[T] = {
+      val arr = new Array[T]((xs.length + 1) / 2)
+      for (i <- 0 until xs.length by 2)
+        arr(i / 2) = xs(i)
+      arr
+    }
+
+    println(evenElems(Vector(1, 2, 3, 4, 5)).toList)
+    println(evenElems(Vector("this", "is", "a", "test", "run")).toList)
+
+    // def wrap[U](xs: Vector[U]) = evenElems(xs) // fails
+    def wrap[U: ClassManifest](xs: Vector[U]) = evenElems(xs) // this works
   }
 
   sealed abstract class TreeT extends Traversable[Int] {
