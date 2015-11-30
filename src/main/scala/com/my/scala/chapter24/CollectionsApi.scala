@@ -440,6 +440,37 @@ object CollectionsApi {
 
     negate(subarr)
     println(arr.toList)
+
+    // Iterators
+    // it foreach println // is one way to print all elements it collection
+    // for (elem <- it) println(elem) // yet another way to print
+
+    val it = Iterator("a", "number", "of", "words")
+    println(it)
+    val ait = it.map(_.length)
+    println(ait)
+    ait foreach println
+    // it.next() // will throw NoSuchElementException
+
+    val it2 = Iterator("a", "number", "of", "words")
+    val ait2 = it2 dropWhile(_.length < 2)
+    println(ait2.next())
+
+    val (it21, it22) = it.duplicate // returns 2 fresh iterators
+
+    // This won't work
+    def skipEmptyWordsNOT(it: Iterator[String]): Unit = {
+      while (it.next().isEmpty) {}
+    }
+
+    def skipEmptyWords(it: BufferedIterator[String]) =
+      while (it.head.isEmpty) {it.next()}
+
+    val it3 = Iterator(1, 2, 3, 4)
+    val bit = it3.buffered
+    println(bit.head)
+    println(bit.next)
+    println(bit.next)
   }
 
   sealed abstract class TreeT extends Traversable[Int] {
