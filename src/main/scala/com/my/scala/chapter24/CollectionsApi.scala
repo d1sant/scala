@@ -490,6 +490,21 @@ object CollectionsApi {
     println(List(1, 2, 3))
     println(Traversable(1, 2, 3))
     println(mutable.Traversable(1, 2, 3))
+
+
+    // Conversions between Java and Scala collections
+    import collection.JavaConversions._
+    import collection.mutable._
+
+    val jul: java.util.List[Int] = ArrayBuffer(1, 2, 3)
+    println(jul)
+    val abuf2: Seq[Int] = jul
+    println(abuf2)
+    val m: java.util.Map[String, Int] = mutable.HashMap("abc" -> 1, "hello" -> 2)
+    println(m)
+
+    val jul2: java.util.List[Int] = List(1, 2, 3)
+    // jul2.add(7) // throws UnsupportedOperationException
   }
 
   sealed abstract class TreeT extends Traversable[Int] {
