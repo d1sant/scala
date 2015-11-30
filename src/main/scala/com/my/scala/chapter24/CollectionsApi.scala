@@ -383,6 +383,16 @@ object CollectionsApi {
 
     // def wrap[U](xs: Vector[U]) = evenElems(xs) // fails
     def wrap[U: ClassManifest](xs: Vector[U]) = evenElems(xs) // this works
+
+    // Strings
+    val astr = "hello"
+    println(astr)
+    println(astr.reverse)
+    println(astr.map(_.toUpper))
+    println(astr drop 3)
+    println(astr slice (1, 4))
+    val as: Seq[Char] = astr
+    println(as)
   }
 
   sealed abstract class TreeT extends Traversable[Int] {
