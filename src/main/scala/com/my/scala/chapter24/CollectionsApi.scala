@@ -471,6 +471,25 @@ object CollectionsApi {
     println(bit.head)
     println(bit.next)
     println(bit.next)
+
+    // Creating collections from scratch
+    List(1, 2, 3)
+    Map('A' -> 1, 'C' -> 2)
+    Traversable()           // An empty traversable object
+    List()                  // the empty list
+    List(1.0, 2.0)          // A list with elements
+    Vector(1.0, 2.0)        // A vector with elements 1.0, 2.0
+    Iterator(1, 2, 3)       // An iterator three integers
+    val dog, cat, bird = 1
+    Set(dog, cat, bird)     // A set of three animals
+    HashSet(dog, cat, bird) // A hash set of the same animals
+    Map('a' -> 7, 'b' -> 0) // A map from characters to integers
+
+    List.apply(1.0, 2.0)    // 'under the covers' each of the above lines is a call to the apply method
+
+    println(List(1, 2, 3))
+    println(Traversable(1, 2, 3))
+    println(mutable.Traversable(1, 2, 3))
   }
 
   sealed abstract class TreeT extends Traversable[Int] {
