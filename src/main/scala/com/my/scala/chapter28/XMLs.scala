@@ -47,6 +47,11 @@ object XMLs {
     val joe = <employee name="Joe" rank="code monkey" serial="123" />
     println(joe \ "@name")
     println(joe \ "@serial")
+
+    // Deserialization
+    val node = therm.toXML
+    println(node)
+    println(therm.fromXML(node))
   }
 
   abstract class CCTherm {
@@ -67,5 +72,15 @@ object XMLs {
        <purchasePrice>{purchasePrice}</purchasePrice>
        <condition>{condition}</condition>
      </cctherm>
+
+    def fromXML(node: scala.xml.Node): CCTherm =
+      new CCTherm {
+        val description: String = (node \ "description").text
+        val yearMade: Int = (node \ "yearMade").text.toInt
+        val dateObtained: String = (node \ "dateObtained").text
+        val bookPrice: Int = (node \ "bookPrice").text.toInt
+        val purchasePrice: Int = (node \ "purchasePrice").text.toInt
+        val condition: Int = (node \ "condition").text.toInt
+      }
   }
 }
