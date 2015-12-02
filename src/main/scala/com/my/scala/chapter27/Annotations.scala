@@ -11,4 +11,16 @@ object Annotations {
   import annotation._
   class strategy(arg: Annotation) extends Annotation
   class delayed extends Annotation
+
+  // Examples:
+  // @deprecated()
+  // @deprecated("use newShinyMethod() instead")
+  // @volatile
+  // @serializable
+  // @SerialVersionUID(123)
+  // @transient
+  // @scala.reflect.BeanProperty
+  // @tailrec
+  // @unchecked
+  // @native
 }
