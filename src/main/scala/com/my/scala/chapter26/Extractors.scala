@@ -23,5 +23,18 @@ object Extractors {
 
     // ss match {
     // case EMail(u1, d1) :: EMail(u2, d2) :: _ if (u1 == u2) => ...
+
+    println(EMail.unapply("John@epfl.ch") equals Some("John", "epfl.ch"))
+    println(EMail.unapply("John Doe") equals None)
+  }
+}
+
+object EMail {
+  // The injection method (optional)
+  def apply(user: String, domain: String) = user + "@" + domain
+  // The extraction method (mandatory)
+  def unapply(str: String): Option[(String, String)] = {
+    val parts = str split "@"
+    if (parts.length == 2) Some(parts(0), parts(1)) else None
   }
 }
