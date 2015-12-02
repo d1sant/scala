@@ -52,6 +52,12 @@ object XMLs {
     val node = therm.toXML
     println(node)
     println(therm.fromXML(node))
+
+    // Loading and saving
+    scala.xml.XML.save("therm1.xml", node)
+    val loadNode = xml.XML.loadFile("therm1.xml")
+    println(loadNode)
+    println(therm.fromXML(loadNode))
   }
 
   abstract class CCTherm {
