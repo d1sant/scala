@@ -35,6 +35,21 @@ object Extractors {
     println(userTwiceUpper("DIDI@hotmail.com"))
     println(userTwiceUpper("DIDO@hotmail.com"))
     println(userTwiceUpper("didi@hotmail.com"))
+
+    def isTomInDotCom(s: String): Boolean = s match {
+      case EMail("tom", Domain("com", _*)) => true
+      case _ => false
+    }
+
+    println(isTomInDotCom("tom@sun.com"))
+    println(isTomInDotCom("peterm@sun.com"))
+    println(isTomInDotCom("tom@acm.org"))
+
+    val s = "tom@support.epfl.ch"
+    val ExpandedEMail(name, topdom, subdoms @ _*) = s
+    println(name)
+    println(topdom)
+    println(subdoms)
   }
 }
 
@@ -59,4 +74,24 @@ object Twice {
 
 object UpperCase {
   def unapply(s: String): Boolean = s.toUpperCase == s
+}
+
+object Domain {
+  // The injection method (optional)
+  def apply(parts: String*): String =
+    parts.reverse.mkString(".")
+  // The extraction method (mandatory)
+  def unapplySeq(whole: String): Option[Seq[String]] =
+    Some(whole.split("\\.").reverse)
+}
+
+object ExpandedEMail {
+  def unapplySeq(email: String)
+    : Option[(String, Seq[String])] = {
+    val parts = email split "@"
+    if (parts.length == 2)
+      Some(parts(0), parts(1).split("\\.").reverse)
+    else
+      None
+  }
 }
