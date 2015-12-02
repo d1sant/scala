@@ -32,6 +32,21 @@ object XMLs {
     }
     println(therm.toXML)
     println(<a> {{{{brace yourself!}}}} </a>)
+
+    // Taking XML apart
+    // text:
+    println(<a>Sounds <tag> good</tag></a>.text)
+    println(<a> input ---&gt; out </a>.text)
+    // sub-elements:
+    println(<a><b><c>hello</c></b></a> \ "b")
+    println(<a><b><c>hello</c></b></a> \ "c")
+    println(<a><b><c>hello</c></b></a> \\ "c")
+    println(<a><b><c>hello</c></b></a> \ "a")
+    println(<a><b><c>hello</c></b></a> \\ "a")
+    // extracting attributes
+    val joe = <employee name="Joe" rank="code monkey" serial="123" />
+    println(joe \ "@name")
+    println(joe \ "@serial")
   }
 
   abstract class CCTherm {
