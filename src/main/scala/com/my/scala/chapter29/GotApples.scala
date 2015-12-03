@@ -11,7 +11,7 @@ object GotApples {
       else
         SimpleDatabase3
     object browser extends Browser3 {
-      val database = db
+      val database: db.type = db
     }
     val apple = SimpleDatabase3.foodNamed("Apple").get
     for (recipe <- browser.recipesUsing(apple))
