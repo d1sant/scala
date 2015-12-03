@@ -42,10 +42,21 @@ object SimpleDatabase2 extends Database {
   def allCategories = categories
 }
 
-object SimpleDatabase3 extends Database with SimpleFoods with SimpleRecipes
+object SimpleDatabase3 extends Database3 with SimpleFoods with SimpleRecipes
 
 abstract class Browser {
   val database: Database
+  def recipesUsing(food: Food) =
+    database.allRecipes.filter(recipe =>
+      recipe.ingredients.contains(food))
+
+  def displayCategory(category: database.FoodCategory): Unit = {
+    println(category)
+  }
+}
+
+abstract class Browser3 {
+  val database: Database3
   def recipesUsing(food: Food) =
     database.allRecipes.filter(recipe =>
       recipe.ingredients.contains(food))
@@ -67,7 +78,7 @@ object SimpleBrowser2 extends Browser {
   val database = SimpleDatabase2
 }
 
-object SimpleBrowser3 extends Browser {
+object SimpleBrowser3 extends Browser3 {
   val database = SimpleDatabase3
 }
 
@@ -85,6 +96,20 @@ object StudentDatabase extends Database {
   )
 }
 
-object StudentBrowser extends Browser {
-  val database = StudentBrowser
+object StudentDatabase3 extends Database3 {
+  object FrozenFood extends Food("FrozenFood")
+  object HeatItUp extends Recipe(
+    "heat it up",
+    List(FrozenFood),
+    "Microwave the 'food' for 10 minutes"
+  )
+  def allFoods = List(FrozenFood)
+  def allRecipes = List(HeatItUp)
+  def allCategories = List(
+    FoodCategory("edible", List(FrozenFood))
+  )
+}
+
+object StudentBrowser extends Browser3 {
+  val database = StudentDatabase3
 }
