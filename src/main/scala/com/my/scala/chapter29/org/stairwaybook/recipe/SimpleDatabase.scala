@@ -12,6 +12,13 @@ abstract class Database {
   def allCategories: List[FoodCategory]
 }
 
+abstract class Database3 extends FoodCategories {
+  def allFoods: List[Food]
+  def allRecipes: List[Recipe]
+  def foodNamed(name: String) =
+    allFoods.find(f => f.name == name)
+}
+
 object SimpleDatabase {
   def allFoods = List(Apple, Orange, Cream, Sugar)
   def foodNamed(name: String): Option[Food] =
@@ -35,6 +42,8 @@ object SimpleDatabase2 extends Database {
   def allCategories = categories
 }
 
+object SimpleDatabase3 extends Database with SimpleFoods with SimpleRecipes
+
 abstract class Browser {
   val database: Database
   def recipesUsing(food: Food) =
@@ -56,6 +65,10 @@ object SimpleBrowser {
 
 object SimpleBrowser2 extends Browser {
   val database = SimpleDatabase2
+}
+
+object SimpleBrowser3 extends Browser {
+  val database = SimpleDatabase3
 }
 
 object StudentDatabase extends Database {
