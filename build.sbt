@@ -15,3 +15,5 @@ libraryDependencies += "org.scala-tools.testing" % "specs_2.10" % "1.6.9" % "tes
 libraryDependencies += "org.scalacheck" %% "scalacheck" % "1.12.2" % "test"
 
 libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.0.2"
+
+libraryDependencies ++= Seq("junit" % "junit" % "4.8.1" % "test")
