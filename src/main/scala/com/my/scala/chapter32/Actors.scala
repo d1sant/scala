@@ -47,8 +47,8 @@ object Actors {
     // Treating native threads as actors
     import scala.actors.Actor._
     self ! "hello"
-    self.receive { case x => x}
-    self.receiveWithin(1000) { case x => x} // wait a sec!
+    println(self.receive { case x => x})
+    println(self.receiveWithin(1000) { case x => x}) // wait a sec!
   }
 }
 
@@ -72,4 +72,3 @@ object SeriousActor extends Actor {
     }
   }
 }
-
