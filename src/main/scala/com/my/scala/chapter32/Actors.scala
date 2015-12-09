@@ -43,6 +43,12 @@ object Actors {
     intActor ! math.Pi // will be ignored
 
     intActor ! 12
+
+    // Treating native threads as actors
+    import scala.actors.Actor._
+    self ! "hello"
+    self.receive { case x => x}
+    self.receiveWithin(1000) { case x => x} // wait a sec!
   }
 }
 
