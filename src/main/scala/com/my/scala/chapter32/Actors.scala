@@ -49,6 +49,32 @@ object Actors {
     self ! "hello"
     println(self.receive { case x => x})
     println(self.receiveWithin(1000) { case x => x}) // wait a sec!
+
+    // Good actors style
+    val sillyActor2 = actor {
+      def emoteLater() {
+        val mainActor = self
+        actor {
+          Thread.sleep(1000)
+          mainActor ! "Emote"
+        }
+      }
+      var emoted = 0
+      emoteLater()
+      loop {
+        react {
+          case "Emote" =>
+            println("I'm acting!")
+            emoted += 1
+            if (emoted < 5)
+              emoteLater()
+          case msg =>
+            println("Received: " + msg)
+        }
+      }
+    }
+
+    sillyActor2 ! "hi there"
   }
 }
 
