@@ -22,4 +22,6 @@ libraryDependencies += "org.scala-lang" % "scala-actors" % "2.11.7"
 
 libraryDependencies ++= Seq("junit" % "junit" % "4.8.1" % "test")
 
+libraryDependencies += "org.scala-lang" % "scala-parser-combinators" % "2.11.0-M4"
+
 // resolvers += "Akka Snapshot Repository" at "http://repo.akka.io/snapshots/"
